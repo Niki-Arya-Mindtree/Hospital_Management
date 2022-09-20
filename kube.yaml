@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bew
+  labels:
+    app: bew
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bew
+  template:
+    metadata:
+      labels:
+        app: bew
+    spec:
+      containers:
+      - name: bew
+        image: nikiarya/hospitalmanagement:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: we-serv
+spec:
+  type: NodePort
+  selector:
+    app: bew
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
