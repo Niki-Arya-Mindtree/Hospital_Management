@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hospital-app
+  name: hospital-azure-app
   labels:
-    app:hospital-app
+    app: hospital-azure-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hospital-app
+      app: hospital-azure-app
   template:
     metadata:
       labels:
-        app: hospital-app
+        app: hospital-azure-app
     spec:
       containers:
-      - name: hospital-app
-        image: nikiarya/hospitalmanagement:1.0
+      - name: hospital-azure-app
+        image:  hospitalmanagement.azurecr.io/hospitalmanagement:1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -26,11 +26,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hospital-server
+  name: hospital-azure-service
 spec:
   type: LoadBalancer
   selector:
-    app: hospital-app
+    app: hospital-azure-app
   ports:
     - protocol: TCP
       port: 80
