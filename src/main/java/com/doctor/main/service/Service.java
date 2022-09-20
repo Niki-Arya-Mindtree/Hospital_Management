@@ -40,7 +40,7 @@ public class Service implements DocMethodInterface{
 	@Override
 	public void updateModel(Model md) throws WrongId
 	{
-		if(repos.findById(md.getId()).isEmpty())
+		if(!repos.findById(md.getId()).isPresent())
 			throw new WrongId("Entered Id is not present in the Data Base.");
 		Model tempmd = repos.findById(md.getId()).get();
 		tempmd.setName(md.getName());

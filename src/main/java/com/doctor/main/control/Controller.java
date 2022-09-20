@@ -30,8 +30,8 @@ public class Controller {
 			return new ResponseEntity<>(serv.getAll() ,HttpStatus.FOUND);
 		} catch (EmptyData e) {
 			throw new EmptyData(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 			
 	}
@@ -44,8 +44,8 @@ public class Controller {
 			return new ResponseEntity<>(serv.oneData(Id) ,HttpStatus.FOUND);
 		} catch (WrongId e) {
 			throw new WrongId(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 			
 	}
@@ -58,8 +58,8 @@ public class Controller {
 			return new ResponseEntity<>(serv.sortingData() ,HttpStatus.ACCEPTED);
 		} catch (EmptyData e) {
 			throw new EmptyData(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 			
 	}
@@ -71,10 +71,10 @@ public class Controller {
 		try {
 			serv.updateModel(mdd);
 			return new ResponseEntity<>(serv.oneData(mdd.getId()) ,HttpStatus.ACCEPTED);
-		} catch (EmptyData e) {
-			throw new EmptyData(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (WrongId e) {
+			throw new WrongId(e.getMsg());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 			
 	}
@@ -88,8 +88,8 @@ public class Controller {
 			return new ResponseEntity<>(serv.oneData(Id) ,HttpStatus.FOUND);
 		} catch (WrongId e) {
 			throw new WrongId(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 	}
 	
@@ -102,8 +102,8 @@ public class Controller {
 			return new ResponseEntity<>("Data added into Data Base",HttpStatus.CREATED);
 		} catch (WrongId e) {
 			throw new WrongId(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 			
 	}
@@ -117,8 +117,8 @@ public class Controller {
 			return new ResponseEntity<>("Data deleted from Data Base",HttpStatus.ACCEPTED);
 		} catch (WrongId e) {
 			throw new WrongId(e.getMsg());
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
 		}
 			
 	}
